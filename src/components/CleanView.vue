@@ -1,9 +1,15 @@
 <template>
   <div>
-    <nav>
-      <router-link to="/login">Login</router-link>
-      <router-link to="/register">Register</router-link>
-    </nav>
+    <v-toolbar>
+      <v-toolbar-title>Vuetify</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn :to="{name: 'login'}"  class="pink">
+      <v-icon>Login</v-icon>
+      </v-btn>
+      <v-btn :to="{name: 'register'}" class="pink">
+      <v-icon>Registrar</v-icon>
+      </v-btn>
+    </v-toolbar>    
     <div>
       <router-view/>
     </div>

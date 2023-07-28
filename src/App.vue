@@ -5,7 +5,11 @@
 </template>
 <script>
 export default {
-  name:"App"
+  name:"App",  
+  mounted() {
+    var user = this.$store.getters.user;
+    if(user==null) this.$router.push({ name: "home" });
+  }
 
 }
 </script>
