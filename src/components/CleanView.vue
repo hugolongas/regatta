@@ -1,23 +1,46 @@
 <template>
   <div>
     <v-toolbar>
-      <v-toolbar-title>Vuetify</v-toolbar-title>
+      <v-toolbar-title>REGATA JUGUESQUERA</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn :to="{name: 'login'}"  class="pink">
-      <v-icon>Login</v-icon>
+      <v-btn @click="login" small>
+        logar-se
+        <v-icon left>
+      mdi-login
+      </v-icon>
       </v-btn>
-      <v-btn :to="{name: 'register'}" class="pink">
-      <v-icon>Registrar</v-icon>
+      <v-btn @click="register"  small>
+        Enregistrar-se
+        <v-icon
+        left
+        dark
+      >
+        mdi-register
+      </v-icon>
       </v-btn>
     </v-toolbar>    
     <div>
-      <router-view/>
-    </div>
+      <router-view />
+    </div>    
+    <LoginDialog ref="lgnd" />
+    <RegisterDialog ref="rgtd" />
   </div>
   </template>
   <script>
-  export default {
-    name:"CeanView"
+  import LoginDialog from "@/components/dialogs/LoginDialog";
+  import RegisterDialog from "@/components/dialogs/RegisterDialog";
+  export default {    
+  components: { LoginDialog,RegisterDialog },
+    name:"CeanView",
+    methods:{
+      login(){
+        this.$refs.lgnd.show();
+      },
+      register(){
+        console.log("a");
+        this.$refs.rgtd.show();
+      }
+    }
   
   }
   </script>

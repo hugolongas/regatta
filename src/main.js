@@ -9,10 +9,17 @@ import axios from './plugins/axios'
 
 import store from './store/main'
 
+
+import '@/plugins/notifications'
+
+import { showMessagesMixin } from '@/mixins/showMessagesMixin'
+Vue.mixin(showMessagesMixin)
+
 Vue.use(vuetify);
 
 Vue.config.productionTip = false
 Vue.use(store);
+
 new Vue({
   router,  
   axios,
