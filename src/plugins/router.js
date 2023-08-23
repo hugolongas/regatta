@@ -11,7 +11,7 @@ const routes = [
     component: () => import('@/components/CleanView.vue'),
     children: [
       {
-        path: '/dashboard',
+        path: '/',
         name: 'home',
         component: () => import('@/components/views/HomeView.vue')
       },

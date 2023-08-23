@@ -10,8 +10,10 @@
   "dependencies": {
     "@mdi/font": "^7.2.96",
     "axios": "^0.21.1",
+    "chart.js": "^4.3.3",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
+    "vue-chartjs": "^5.2.0",
     "vue-router": "^3.2.0",
     "vuejs-noty": "^0.1.4",
     "vuetify": "^2.7.0",

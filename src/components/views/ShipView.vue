@@ -72,11 +72,7 @@ export default {
     },
     shipImg()
     {
-      return require("@/assets/ship_"+this.user.team.logo);
-    },
-    teamLogo()
-    {
-      return require("@/assets/"+this.user.team.logo);
+      return "/img/"+this.user.team.logo;
     },
   },
   methods: {

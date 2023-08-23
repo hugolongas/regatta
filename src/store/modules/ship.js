@@ -10,7 +10,7 @@ const getters ={
         let s = state.ship
         s.maxSpeed = s.speed
         s.maxAcceleration = s.acceleration
-
+        
         s.upgrades.forEach(upgrade => {
             if(upgrade.upgrade_type == "speed")
                 s.maxSpeed *= (1+upgrade.value/100);

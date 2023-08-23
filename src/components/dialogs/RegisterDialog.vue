@@ -55,8 +55,8 @@ export default {
       this.$http.post("register?name=" + this.name + "&email=" + this.email + "&password=" + this.password + "&teamId=" + this.teamId)
         .then((response) => {
           window.console.log(response);
-          if (response == "success") {
-            this.$router.push({ name: "home" });
+          if (response.status == 201) {
+            this.close();
           } else {
             this.error = response;
           }
