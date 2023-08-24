@@ -1,6 +1,6 @@
 <template>
   <div class="atletes">
-    <h1 class="title">Athlete</h1>
+    <h1 class="title">Mariners</h1>
     <v-data-table :headers="headers" :items="athletes" :items-per-page="5" class="elevation-1">
       <template v-slot:[`item.actions`]="{ item }">
         <div class="actions">
@@ -30,7 +30,7 @@ export default {
       ship:[],
       headers: [
         {
-          text: 'Nom atleta',
+          text: 'Mariner',
           align: 'start',
           sortable: false,
           value: 'name',

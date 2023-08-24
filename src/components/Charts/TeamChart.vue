@@ -1,16 +1,12 @@
 <template>
-  <Bar
-    id="my-chart-id"
-    :options="chartOptions"
-    :data="chart"
-  />
+  <Bar id="my-chart-id" :options="chartOptions" :data="chartData" :width="500" :height="300"/>
 </template>
 
 <script>
 import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+ChartJS.register(BarElement, CategoryScale, LinearScale)
 
 export default {
   name: 'TeamChart',
@@ -18,13 +14,11 @@ export default {
   data() {
     return {
       chartData: {
-        labels: [],
-        datasets: [
-          {
-            label: 'Punts',
-            backgroundColor: '#f87979',
-            data: []
-          }
+        labels: ['Bisky', "Can T'Implora", 'Concos', 'Skando', "Sporting l'olla"],
+        datasets: [{
+          backgroundColor: ["#ed1e1e", "#2269e5", "#fce302", "#04f759", "#fc9700"],
+          data: [0, 0, 0, 0, 0]
+        }
         ]
       },
       chartOptions: {
@@ -32,12 +26,13 @@ export default {
       }
     }
   },
-  mounted(){
+  mounted() {
     this.load();
   },
-  computed:{
-    chart(){
-        return this.chartData;
+  computed: {
+    chart() {
+      window.console.log(this.chartData);
+      return this.chartData;
     }
   },
   methods: {
@@ -45,21 +40,28 @@ export default {
       this.getTeams();
     },
     getTeams() {
-      var that = this;
-      this.$http.get("leaderboard/teams").then((response) => {        
+      this.$http.get("leaderboard/teams").then((response) => {
         if (response.data) {
           var teamsList = response.data.data;
           window.console.log(teamsList);
-          teamsList.map((x) => {
-            that.chartData.labels.push(x.name);
-            that.chartData.datasets.data.push(x.total_points);
-          })          
+          this.chartData = {
+            labels: teamsList.map(item => item.name),
+            datasets: [{
+              backgroundColor: teamsList.map(item=>this.getColor(item.id-1)),
+              data: teamsList.map(item => item.total_points)
+            }
+            ]
+          }
         } else {
           let error = response;
           this.showError(error);
         }
       });
     },
+    getColor(id){
+      var color = ["#fc8803", "#fc0303", "#4169e1", "#ffff00", "#f5054f"];
+      return color[id]
+    }
   },
 }
 </script>

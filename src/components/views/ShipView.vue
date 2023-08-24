@@ -72,7 +72,7 @@ export default {
     },
     shipImg()
     {
-      return "/img/"+this.user.team.logo;
+      return "/img/ship_"+this.user.team.logo;
     },
   },
   methods: {

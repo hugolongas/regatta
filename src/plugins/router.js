@@ -13,7 +13,7 @@ const routes = [
       {
         path: '/',
         name: 'home',
-        component: () => import('@/components/views/HomeView.vue')
+        component: () => import('@/components/views/DashboardView.vue')
       },
       {
         path: '/validate',
@@ -49,7 +49,12 @@ const routes = [
         meta: {
           authorize: true
         }
-      }
+      },
+      {
+        path: '/dashboard',
+        name: 'dashboard',
+        component: () => import('@/components/views/DashboardView.vue')
+      },
     ]
   },
 ]

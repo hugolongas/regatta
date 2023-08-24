@@ -1,6 +1,6 @@
 <template>
   <div class="carreres">
-    <h1 class="title">Races</h1>
+    <h1 class="title">Curses</h1>
     <v-data-table :headers="headers" :items="races" :items-per-page="5" class="elevation-1">
       <template v-slot:[`item.actions`]="{ item }">
         <div class="actions">

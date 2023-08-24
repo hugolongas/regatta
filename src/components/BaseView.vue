@@ -1,22 +1,22 @@
 <template>
   <div>
-    <v-toolbar :class="teamColor">
+    <v-system-bar :color="teamColor" fixed height="40px">
       <v-toolbar-title >Regatta{{user.team.name }}</v-toolbar-title>
       <v-spacer></v-spacer>
       <div class="user-info">
         <span class="user-item">Mariners: {{ ship.current_crew }}/{{ ship.max_crew }}</span>        
         <span class="user-item">Diners: {{ user.money }}</span>
       </div>
-      <v-spacer></v-spacer>
-      <v-btn small @click="logout">
-        Deslogar-se
-        <v-icon>mdi-logout</v-icon>
-      </v-btn>
-    </v-toolbar>
+    </v-system-bar>
     <div class="container">
       <router-view />
     </div>
+
     <v-bottom-navigation fixed>
+      <v-btn :to="{ name: 'dashboard' }">
+        <span>Classificació</span>
+        <v-icon>mdi-chart-bar</v-icon>
+      </v-btn>
       <v-btn :to="{ name: 'athlete' }">
         <span>Mariners</span>
         <v-icon>mdi-account-group</v-icon>
@@ -30,6 +30,11 @@
       <v-btn :to="{ name: 'races' }">
         <span>Curses</span>
         <v-icon>mdi-vector-polyline</v-icon>
+      </v-btn>
+      <v-spacer></v-spacer>
+      <v-btn @click="logout">
+        <span>Deslogar-se</span>
+        <v-icon>mdi-logout</v-icon>
       </v-btn>
     </v-bottom-navigation>
   </div>
@@ -65,21 +70,10 @@ export default {
       return this.$store.getters.ship;
     },
     teamColor(){
-      var tColor = this.user.team.id;
-      switch(tColor){
-        case 1:
-          return "orange";
-          case 2:
-          return "red";
-          case 3:
-          return "blue";
-          case 4:
-          return "yellow";
-          case 5:
-          return "white";
-      }
-      
-      return "white";
+      var tColor = this.user.team.id-1;
+      if(tColor<0) return 'white'
+      var color = ["#fc8803", "#fc0303", "#4169e1", "#ffff00", "#f5054f"];
+      return color[tColor]
     }
   },
   mounted() {
@@ -88,6 +82,9 @@ export default {
 }
 </script>
 <style>
+.container{
+  padding-top:40px;
+}
 .user-item{
   display: inline-block;
   margin-right: 5px;

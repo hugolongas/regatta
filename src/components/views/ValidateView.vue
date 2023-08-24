@@ -1,6 +1,9 @@
 <template>
     <div class="validate">
-      <h1 class="title">Validar</h1>
+      <p>
+        S'ha validat el email, en breus moments seras redirigit a la página d'inici
+      </p>  
+    
     </div>
   </template>
   
