@@ -38,7 +38,7 @@ myAxios.interceptors.response.use(
             store.dispatch("logout");
         }
       } catch(e) {
-        return Promise.reject(error)
+        return Promise.resolve(error)
       }
   
       return Promise.reject(error)

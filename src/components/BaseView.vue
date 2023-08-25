@@ -51,8 +51,7 @@ export default {
     logout() {
       this.$store.dispatch("logout").then((response) => {
         if (response == "success") {
-
-          this.$store.reset()
+          sessionStorage.clear();
           this.$router.push({ name: "home" });
         } else {
           this.error = response;
@@ -72,10 +71,16 @@ export default {
       return this.$store.getters.ship;
     },
     teamColor() {
+      if(this.user==null) return "#000000";
       var tColor = this.user.team.id - 1;
       if (tColor < 0) return 'white'
       var color = ["#fc8803", "#fc0303", "#4169e1", "#ffff00", "#f5054f"];
       return color[tColor]
+    },
+    regattaTitle(){
+      if(this.user==null) return "Regatta";
+      var title = "Regata colla: "+ this.user.team.name;
+      return title;
     }
   },
   async created() {

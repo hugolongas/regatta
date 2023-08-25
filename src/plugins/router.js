@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '',
-    name: 'clean',
+    name: '',
     component: () => import('@/components/CleanView.vue'),
     children: [
       {
@@ -16,7 +16,7 @@ const routes = [
         component: () => import('@/components/views/DashboardView.vue')
       },
       {
-        path: '/validate',
+        path: '/validate/:token',
         name: 'validate',
         component: () => import('@/components/views/ValidateView.vue')
       },
@@ -53,7 +53,10 @@ const routes = [
       {
         path: '/dashboard',
         name: 'dashboard',
-        component: () => import('@/components/views/DashboardView.vue')
+        component: () => import('@/components/views/DashboardView.vue'),
+        meta: {
+          authorize: true
+        }
       },
     ]
   },
@@ -73,6 +76,7 @@ router.beforeResolve((to, from, next) => {
       router.push({ name: "home" });
     }
     else if (user != null) {
+      window.console.log("user!=null")
       window.console.log(to)
       next()
     }
@@ -83,7 +87,7 @@ router.beforeResolve((to, from, next) => {
   }
   else {
     if (user!=null) {
-      window.console.log("redirect - login")
+      window.console.log("redirect - logged")
       router.push({ name: "ship" });
     }
     next()

@@ -16,7 +16,7 @@ const actions = {
                 if (response !== null) {
                     if (response.status == 200) {
                         let user = response.data;
-                        commit('saveUser', user)
+                        commit('saveUser', user.data)
                         resolve('success')
                     }
                 }

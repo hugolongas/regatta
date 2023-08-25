@@ -36,7 +36,6 @@ export default {
     name: "",
     email: "",
     password: "",
-    error: false,
     teamId: 0
   }),
   computed: {
@@ -57,8 +56,11 @@ export default {
           window.console.log(response);
           if (response.status == 201) {
             this.close();
+            this.showSuccess("Usuari Creat");            
           } else {
-            this.error = response;
+            var result = response.data;
+            if(!result.result)
+            this.showError(result.data);  
           }
         });
     },
