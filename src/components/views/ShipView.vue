@@ -7,7 +7,7 @@
         sm="5"
         md="8">
         
-        <img :src=shipImg style="max-width:600px"/>
+        <img :src=shipImg style="max-width:600px;width:100%"/>
         </v-col>
         <v-col cols="12"
         sm="7"

@@ -1,12 +1,15 @@
 <template>
   <div class="carreres">
     <h1 class="title">Curses</h1>
-    <v-data-table :headers="headers" :items="races" :items-per-page="5" class="elevation-1">
+    <v-data-table :headers="headers" :items="races" :items-per-page="10" class="elevation-1">
       <template v-slot:[`item.actions`]="{ item }">
         <div class="actions">
           <v-layout align-center justify-end>            
-              <v-btn depressed text dark color="primary" @click="seeRaceInfo(item)">
+              <v-btn depressed text dark color="primary" @click="seeRaceInfo(item)" v-if="!item.race_finished">
                 Veure condició
+              </v-btn>
+              <v-btn depressed text dark color="primary" @click="seeRaceInfo(item)" v-if="item.race_finished">
+                Veure resultats carrera
               </v-btn>
           </v-layout>
         </div>
@@ -26,9 +29,11 @@ export default {
   name: "RaceListView",
   data() {
     return {
-      user:[],
-      ship:[],
       headers: [
+        {
+          text:'Cursa',
+          value:'stage.id',
+        },
         {
           text: 'Punt inicial',
           value: 'stage.starting_port',
@@ -61,7 +66,7 @@ export default {
     seeRaceInfo(race)
     {
       console.log(race);      
-      this.$refs.rid.show(race.stage);
+      this.$refs.rid.show(race);
     }
   },
 };

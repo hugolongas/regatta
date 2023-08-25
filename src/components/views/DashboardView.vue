@@ -62,6 +62,10 @@ export default {
       ],
     };
   },
+  async created(){
+      await this.$store.dispatch("syncDashboardTeams");
+      await this.$store.dispatch("syncDashboardUsers");
+  },
   computed: {
     leaderboard() {
       return this.$store.getters.getDashboardUsers

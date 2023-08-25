@@ -21,15 +21,7 @@ export default {
   computed: {
     chart() {
       var teamsList = this.$store.getters.getDashboardTeams;
-
-
       return teamsList;
-    }
-  },
-  methods: {
-    getColor(id){
-      var color = ["#fc8803", "#fc0303", "#4169e1", "#ffff00", "#f5054f"];
-      return color[id]
     }
   },
 }

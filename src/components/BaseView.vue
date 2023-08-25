@@ -12,29 +12,30 @@
       <router-view />
     </div>
 
-    <v-bottom-navigation fixed>
+    <v-bottom-navigation fixed v-model="navIcon"      
+      color="primary">
       <v-spacer></v-spacer>
       <v-btn :to="{ name: 'dashboard' }">
-        <span>Classificació</span>
+        <span class="bottom-navigation-text">Classificació</span>
         <v-icon>mdi-chart-bar</v-icon>
       </v-btn>
       <v-btn :to="{ name: 'athlete' }">
-        <span>Mariners</span>
+        <span class="bottom-navigation-text">Mariners</span>
         <v-icon>mdi-account-group</v-icon>
       </v-btn>
 
       <v-btn :to="{ name: 'ship' }">
-        <span>Vaixell</span>
+        <span class="bottom-navigation-text">Vaixell</span>
         <v-icon>mdi-ship-wheel</v-icon>
       </v-btn>
 
       <v-btn :to="{ name: 'races' }">
-        <span>Curses</span>
+        <span class="bottom-navigation-text">Curses</span>
         <v-icon>mdi-vector-polyline</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
       <v-btn @click="logout">
-        <span>Deslogar-se</span>
+        <span class="bottom-navigation-text">Deslogar-se</span>
         <v-icon>mdi-logout</v-icon>
       </v-btn>
     </v-bottom-navigation>
@@ -45,6 +46,7 @@ export default {
   name: "BaseView",
   data() {
     return {
+      navIcon:2,
     }
   },
   methods: {
@@ -99,5 +101,11 @@ export default {
   background-color: white;
   border-radius: 25px;
   padding: 2px 5px;
+  font-size: 13px;
+}
+@media screen and (min-width: 800px) {
+    .user-item{
+      font-size: 15px;
+    }
 }
 </style>

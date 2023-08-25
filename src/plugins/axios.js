@@ -31,6 +31,7 @@ myAxios.interceptors.response.use(
       try {
         if (401 === error.response.status) {
           // Remove user and go to login
+          store.dispatch("logout");
           this.$route.push({name:"home"});
         } else if (403 === error.response.status) {
             store.dispatch("logout");
@@ -41,8 +42,8 @@ myAxios.interceptors.response.use(
         return Promise.resolve(error)
       }
   
-      return Promise.reject(error)
-      //return Promise.resolve(error);
+      //return Promise.reject(error)
+      return Promise.resolve(error);
     },
   )
 

@@ -7,12 +7,15 @@ const state = {
 
 const getters ={
     getDashboardTeams:state=>{
-        var color = ["#fc8803", "#fc0303", "#4169e1", "#ffff00", "#f5054f"];
+        var color = ["rgba(252, 136, 3, 0.2)", "rgba(252, 3, 3, 0.2)", "rgba(65, 105, 225, 0.2)", "rgba(255, 255, 0, 0.2)", "rgba(255, 192, 203,0.2)"];
+        var borderColor = ["#fc8803", "#fc0303", "#4169e1", "#ffff00", "#FFC0CB"];
         var chartData = {
             labels: state.dashboardTeams.map(item => item.name),
             datasets: [{
               backgroundColor: state.dashboardTeams.map(item=>color[item.id-1]),
-              data: state.dashboardTeams.map(item => item.total_points)
+              borderColor: state.dashboardTeams.map(item=>borderColor[item.id-1]),
+              data: state.dashboardTeams.map(item => item.total_points),
+              borderWidth: 1
             }
             ]
           }

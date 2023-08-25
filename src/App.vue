@@ -6,16 +6,16 @@
 <script>
 export default {
   name:"App",  
+  async created(){
+    await this.syncData();
+  },
   mounted() {
     var user = this.$store.getters.user;
-    if(user==null) this.$router.push({ name: "home" });
-    this.syncData();
+    if(user==null) this.$router.push({ name: "home" });    
   },
   methods:{
     async syncData(){
       await this.$store.dispatch("syncTeams");
-      await this.$store.dispatch("syncDashboardTeams");
-      await this.$store.dispatch("syncDashboardUsers");
     }
   }
 
