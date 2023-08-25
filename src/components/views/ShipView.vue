@@ -61,7 +61,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch("syncShip");
-
   },
   computed: {
     user(){

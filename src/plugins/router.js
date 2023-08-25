@@ -27,7 +27,7 @@ const routes = [
     component: () => import('@/components/BaseView.vue'),
     children: [
       {
-        path: '/ship',
+        path: '/vaixell',
         name: 'ship',
         component: () => import('@/components/views/ShipView.vue'),
         meta: {
@@ -35,7 +35,7 @@ const routes = [
         }
       },
       {
-        path: '/athletes',
+        path: '/mariners',
         name: 'athlete',
         component: () => import('@/components/views/AthleteListView.vue'),
         meta: {
@@ -43,7 +43,7 @@ const routes = [
         }
       },
       {
-        path: '/races',
+        path: '/curses',
         name: 'races',
         component: () => import('@/components/views/RaceListView.vue'),
         meta: {
@@ -73,7 +73,7 @@ router.beforeResolve((to, from, next) => {
       router.push({ name: "home" });
     }
     else if (user != null) {
-      window.console.log("next")
+      window.console.log(to)
       next()
     }
     else {
@@ -82,7 +82,7 @@ router.beforeResolve((to, from, next) => {
     }
   }
   else {
-    if (user.length > 0) {
+    if (user!=null) {
       window.console.log("redirect - login")
       router.push({ name: "ship" });
     }

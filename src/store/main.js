@@ -9,6 +9,7 @@ import teams from './modules/team'
 import ship from './modules/ship'
 import upgrades from './modules/upgrades'
 import races from './modules/races'
+import dashboard from './modules/dashboard'
 
 
 const vuexPerist = new VuexPersistence({
@@ -25,7 +26,8 @@ const vuex = new Vuex.Store({
         teams,
         ship,
         upgrades,
-        races
+        races,
+        dashboard
     },
     plugins:[vuexPerist.plugin]
 });

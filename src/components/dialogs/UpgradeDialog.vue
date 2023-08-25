@@ -65,18 +65,12 @@ export default {
       console.log(upgradeId);
       this.$http.post("ship/addupgrade/" + upgradeId)
         .then((response) => {
-          window.console.log(response);
           if (response.data) {
-
-            this.$store.dispatch("syncShip").then(response => {
-              console.log(response);
-              this.$store.dispatch("getUser").then(response => {
-                console.log(response);
-                this.showSuccess("Actualització afegida");
-                this.loading = false;
-                this.close();
-              });
-            });
+            this.$store.dispatch("syncShip");
+            this.$store.dispatch("getUser");
+            this.showSuccess("Actualització afegida");
+            this.loading = false;
+            this.close();
           } else {
             let error = response;
             this.showError(error);
@@ -91,18 +85,14 @@ export default {
           window.console.log(response);
           if (response.data) {
 
-            this.$store.dispatch("syncShip").then(response => {
-              console.log(response);
-              this.$store.dispatch("getUser").then(response => {
-                console.log(response);
-                this.showSuccess("Actualització eliminada");
-                this.loading = false;
-                this.close();
-              });
+            this.$store.dispatch("syncShip");
+            this.$store.dispatch("getUser").then(() => {
+              this.showSuccess("Actualització eliminada");
+              this.loading = false;
+              this.close();
             });
-
-
           } else {
+            this.loading = false;
             let error = response;
             this.showError(error);
           }

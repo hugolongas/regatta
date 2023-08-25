@@ -14,6 +14,8 @@ export default {
   methods:{
     async syncData(){
       await this.$store.dispatch("syncTeams");
+      await this.$store.dispatch("syncDashboardTeams");
+      await this.$store.dispatch("syncDashboardUsers");
     }
   }
 
