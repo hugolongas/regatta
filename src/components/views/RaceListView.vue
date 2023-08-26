@@ -1,7 +1,7 @@
 <template>
   <div class="carreres">
     <h1 class="title">Curses</h1>
-    <v-data-table :headers="headers" :items="races" :items-per-page="10" class="elevation-1">
+    <v-data-table :headers="headers" :items="races" :items-per-page="10" class="elevation-1" :loading="loading">
       <template v-slot:[`item.actions`]="{ item }">
         <div class="actions">
           <v-layout align-center justify-end>            
@@ -29,6 +29,7 @@ export default {
   name: "RaceListView",
   data() {
     return {
+      loading:false,
       headers: [
         {
           text:'Cursa',
@@ -54,8 +55,11 @@ export default {
       ],
     };
   },
-  mounted() {
-    this.$store.dispatch("SyncRaces");
+  created() {
+    this.loading = true;
+    this.$store.dispatch("SyncRaces").then(()=>{
+      this.loading = false;
+    });
   },
   computed: {
     races() {

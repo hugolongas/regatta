@@ -45,8 +45,11 @@ export default {
       ],
     };
   },
-  mounted() {
-    this.$store.dispatch("syncAthletes");
+  created() {
+    this.loading = true;
+    this.$store.dispatch("syncAthletes").then(()=>{
+      this.loading = false;
+    });
 
     this.ship = this.$store.getters.ship;
   },

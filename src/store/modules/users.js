@@ -15,9 +15,14 @@ const actions = {
             Vue.axios.post("/login?email=" + loginData.email + "&password=" + loginData.password).then((response) => {
                 if (response !== null) {
                     if (response.status == 200) {
-                        let user = response.data;
-                        commit('saveUser', user.data)
-                        resolve('success')
+                        let resp = response.data;
+                        if(resp.result){
+                            commit('saveUser', resp.data)
+                            resolve('success')
+                        }
+                        else{
+                            resolve(resp.data)
+                        }
                     }
                 }
                 else {
