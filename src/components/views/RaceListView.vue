@@ -5,10 +5,10 @@
       <template v-slot:[`item.actions`]="{ item }">
         <div class="actions">
           <v-layout align-center justify-end>            
-              <v-btn depressed text dark color="primary" @click="seeRaceInfo(item)" v-if="!item.race_finished">
+              <v-btn depressed text dark color="primary" @click="seeRaceInfo(item)" v-if="!!!+item.race_finished">
                 Veure condició
               </v-btn>
-              <v-btn depressed text dark color="primary" @click="seeRaceInfo(item)" v-if="item.race_finished">
+              <v-btn depressed text dark color="primary" @click="seeRaceInfo(item)" v-if="!!+item.race_finished">
                 Veure resultats carrera
               </v-btn>
           </v-layout>
