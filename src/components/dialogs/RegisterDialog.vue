@@ -20,8 +20,9 @@
                 placeholder="Email"></v-text-field>
 
               <v-text-field v-model="password" class="form-input" type="password" id="password"
-                placeholder="Password"></v-text-field>
-              <v-select :items="teams" label="Equip" v-model="teamId" item-text="name" item-value="id">
+                placeholder="Password" required></v-text-field>
+              <v-select :items="teams" label="Equip" v-model="teamId"
+               item-text="name" item-value="id" required>
                 
               </v-select>
             </v-form>

@@ -63,7 +63,7 @@ export default {
       this.loading = true;
       this.$http.post("ship/addathlete/" + athleteId)
         .then((response) => {
-          if (response.data) {
+          if (response.result) {
             this.$store.dispatch("syncShip");
             this.$store.dispatch("getUser");
             this.$store.dispatch("syncAthletes").then(() => {
@@ -71,7 +71,7 @@ export default {
               this.loading = false;
             });
           } else {
-            let error = response;
+            let error = response.data;
             this.loading = false;
             this.showError(error);
           }
@@ -88,7 +88,7 @@ export default {
               this.loading = false;
             });
           } else {
-            let error = response;
+            let error = response.data;
             this.loading = false;
             this.showError(error);
           }

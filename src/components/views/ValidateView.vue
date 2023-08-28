@@ -7,12 +7,12 @@
   </div>
 </template>
   
-  <script>
+<script>
 export default {
   data: () => ({}),
   mounted() {
     let token = this.$route.query.token;
-    if (token != "")
+    if (token != "") {
       this.$http.post("/verifyOptin?token=" + token).then((response) => {
         window.console.log(response);
         if (response == "success") {
@@ -21,6 +21,7 @@ export default {
           this.error = response;
         }
       });
+    }
   },
   computed: {},
   methods: {},

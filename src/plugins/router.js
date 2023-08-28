@@ -7,7 +7,6 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '',
-    name: '',
     component: () => import('@/components/CleanView.vue'),
     children: [
       {
@@ -16,7 +15,7 @@ const routes = [
         component: () => import('@/components/views/DashboardView.vue')
       },
       {
-        path: '/validate/:token',
+        path: '/validate',
         name: 'validate',
         component: () => import('@/components/views/ValidateView.vue')
       },

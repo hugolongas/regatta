@@ -2,23 +2,23 @@
   <v-dialog v-model="dialog" transition="dialog-bottom-transition" width="800">
     <v-card>
       <v-card-title>Informació de la carrera</v-card-title>
-      <v-card-text v-if="race!=null">        
-        <v-container grid-list-xl fluid v-if="!race.race_finished">          
-          <v-layout flex-child wrap  >
+      <v-card-text v-if="race != null">
+        <v-container grid-list-xl fluid v-if="!!!+race.race_finished">
+          <v-layout flex-child wrap>
             <v-flex sm12>
-              <ul v-show="race.stage.weather_effects.length>0">
+              <ul v-show="race.stage.weather_effects.length > 0">
                 <li v-for="(wEffect, i) in race.stage.weather_effects" :key="i">
-                  {{wEffect.description}}
+                  {{ wEffect.description }}
                 </li>
-              </ul>    
-              <span v-show="race.stage.weather_effects.length<=0">
+              </ul>
+              <span v-show="race.stage.weather_effects.length <= 0">
                 No hi ha condicions adverses
-              </span>          
+              </span>
             </v-flex>
           </v-layout>
         </v-container>
-        
-        <v-container grid-list-xl fluid v-if="race.race_finished">
+
+        <v-container grid-list-xl fluid v-if="!!+race.race_finished">
           <v-layout flex-child wrap>
             <v-flex sm12>
               <v-card>
@@ -27,24 +27,24 @@
                 </v-card-title>
                 <v-card-text>
                   <ul>
-                <li v-for="(team, i) in JSON.parse(race.results).teams" :key="i">
-                  {{team.team}}->{{team.points}}
-                </li>
-              </ul>    
+                    <li v-for="(team, i) in JSON.parse(race.results).teams" :key="i">
+                      {{ team.team }}->{{ team.points }}
+                    </li>
+                  </ul>
                 </v-card-text>
-              </v-card>   
-                            <v-card>
+              </v-card>
+              <v-card>
                 <v-card-title>
                   Equips
                 </v-card-title>
                 <v-card-text>
                   <ul>
-                <li v-for="(user, i) in JSON.parse(race.results).users" :key="i">
-                  {{user.user}}->{{user.points}}
-                </li>
-              </ul>    
+                    <li v-for="(user, i) in JSON.parse(race.results).users" :key="i">
+                      {{ user.user }}->{{ user.points }}
+                    </li>
+                  </ul>
                 </v-card-text>
-              </v-card>                   
+              </v-card>
             </v-flex>
           </v-layout>
         </v-container>
