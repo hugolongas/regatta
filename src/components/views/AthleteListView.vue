@@ -47,11 +47,17 @@ export default {
   },
   created() {
     this.loading = true;
-    this.$store.dispatch("syncAthletes").then(()=>{
+    this.$store.dispatch("syncAthletes").then(() => {
       this.loading = false;
     });
 
     this.ship = this.$store.getters.ship;
+  },
+  mounted() {
+    window.echo.channel('regatta-channel')
+      .listen('AthleteAdded', (event) => {
+        console.log('Event received:', event);
+      });
   },
   computed: {
     athletes() {
@@ -63,7 +69,7 @@ export default {
       this.loading = true;
       this.$http.post("ship/addathlete/" + athleteId)
         .then((response) => {
-          if (response.result) {
+          if (response.data.result) {
             this.$store.dispatch("syncShip");
             this.$store.dispatch("getUser");
             this.$store.dispatch("syncAthletes").then(() => {
@@ -71,7 +77,7 @@ export default {
               this.loading = false;
             });
           } else {
-            let error = response.data;
+            let error = response.data.data;
             this.loading = false;
             this.showError(error);
           }
@@ -81,14 +87,14 @@ export default {
       this.loading = true;
       this.$http.post("ship/removeathlete/" + athleteId)
         .then((response) => {
-          if (response.data) {this.$store.dispatch("syncShip");
+          if (response.data.result) {
             this.$store.dispatch("getUser");
             this.$store.dispatch("syncAthletes").then(() => {
               this.showSuccess("Mariner venut");
               this.loading = false;
             });
           } else {
-            let error = response.data;
+            let error = response.data.data;
             this.loading = false;
             this.showError(error);
           }
