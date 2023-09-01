@@ -9,5 +9,12 @@ const laravelEcho = new Echo({
     encrypted: true,
     forceTLS: true,
 });
+
 window.echo = laravelEcho;
+
+window.echo.channel('regatta-channel')
+.listen('AthleteAdded', ()=>{
+    console.log("AthleteAdded");
+});
+
 export default laravelEcho;

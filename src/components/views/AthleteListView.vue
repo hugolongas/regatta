@@ -54,10 +54,7 @@ export default {
     this.ship = this.$store.getters.ship;
   },
   mounted() {
-    window.echo.channel('regatta-channel')
-      .listen('AthleteAdded', (event) => {
-        console.log('Event received:', event);
-      });
+    
   },
   computed: {
     athletes() {

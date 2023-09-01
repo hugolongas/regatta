@@ -1,5 +1,5 @@
 <template>
-  <Bar id="my-chart-id" :options="chartOptions" :data="chart" :width="500" :height="300"/>
+  <Bar id="my-chart-id" :options="chartOptions" :data="chart"  class="chartTeam" />
 </template>
 
 <script>
@@ -26,3 +26,9 @@ export default {
   },
 }
 </script>
+<style>
+.chartTeam{
+  width:100%;
+  height: auto;
+}
+</style>
