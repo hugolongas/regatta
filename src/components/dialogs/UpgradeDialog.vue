@@ -82,7 +82,6 @@ export default {
       console.log(upgradeId);
       this.$http.post("ship/removeupgrade/" + upgradeId)
         .then((response) => {
-          window.console.log(response);
           if (response.data) {
 
             this.$store.dispatch("syncShip");

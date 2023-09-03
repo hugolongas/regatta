@@ -22,7 +22,7 @@
     </v-data-table>
   </div>
 </template>
-  
+
 <script>
 export default {
   name: "AthleteView",
@@ -54,7 +54,6 @@ export default {
     this.ship = this.$store.getters.ship;
   },
   mounted() {
-    
   },
   computed: {
     athletes() {
@@ -85,6 +84,7 @@ export default {
       this.$http.post("ship/removeathlete/" + athleteId)
         .then((response) => {
           if (response.data.result) {
+            this.$store.dispatch("syncShip");
             this.$store.dispatch("getUser");
             this.$store.dispatch("syncAthletes").then(() => {
               this.showSuccess("Mariner venut");
@@ -97,7 +97,6 @@ export default {
           }
         });
     }
-
   },
 };
 </script>

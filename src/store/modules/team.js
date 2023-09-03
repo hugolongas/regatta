@@ -20,6 +20,7 @@ const actions ={
     async syncTeams({commit}) {
         return new Promise((resolve,reject)=>{            
             Vue.axios.get("/teams/all").then((response)=>{
+                window.console.log(response);
                 if(response!==null){
                     if(response.status==200){
                     let teams = response.data; 

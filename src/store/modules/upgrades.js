@@ -11,8 +11,7 @@ const getters ={
 const actions ={
     async syncUpgrades({commit}) {
         return new Promise((resolve,reject)=>{            
-            Vue.axios.get("/upgrades/all ").then((response)=>{
-                window.console.log(response)                
+            Vue.axios.get("/upgrades/all ").then((response)=>{   
                 if(response!==null){
                     if(response.status==200){
                     let upgrades = response.data; 

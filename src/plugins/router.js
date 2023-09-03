@@ -69,24 +69,18 @@ const router = new VueRouter({
 router.beforeResolve((to, from, next) => {
   var user = store.getters.user
   if (to.matched.some(record => record.meta.authorize)) {
-    window.console.log(user)
     if (user.length <= 0) {
-      window.console.log("redirect - login")
       router.push({ name: "home" });
     }
     else if (user != null) {
-      window.console.log("user!=null")
-      window.console.log(to)
       next()
     }
     else {
-      window.console.log("redirect - login")
       router.push({ name: "home" });
     }
   }
   else {
     if (user!=null) {
-      window.console.log("redirect - logged")
       router.push({ name: "ship" });
     }
     next()

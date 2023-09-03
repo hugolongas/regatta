@@ -50,6 +50,10 @@ export default {
         {
           text: 'Data de la cursa',
           value: 'race_date',
+        },             
+        {
+          text: 'Data de la cursa',
+          value: 'stage.prize',
         },
         { text: 'Accions', value: 'actions' }
       ],
@@ -69,7 +73,6 @@ export default {
   methods: {
     seeRaceInfo(race)
     {
-      console.log(race);      
       this.$refs.rid.show(race);
     }
   },

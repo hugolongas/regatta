@@ -34,7 +34,6 @@ export default {
       this.$refs.lgnd.show();
     },
     register() {
-      console.log("a");
       this.$refs.rgtd.show();
     }
   }

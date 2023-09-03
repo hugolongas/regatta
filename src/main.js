@@ -6,7 +6,6 @@ import App from './App.vue'
 
 import router from './plugins/router'
 import axios from './plugins/axios'
-import echo from './plugins/echo';
 
 import store from './store/main'
 
@@ -17,7 +16,6 @@ import { showMessagesMixin } from '@/mixins/showMessagesMixin'
 Vue.mixin(showMessagesMixin)
 
 Vue.use(vuetify);
-Vue.use(echo);
 Vue.config.productionTip = false
 Vue.use(store);
 
@@ -26,6 +24,5 @@ new Vue({
   axios,
   store,
   vuetify,
-  echo,
   render: h => h(App)
 }).$mount('#app')

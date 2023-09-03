@@ -66,7 +66,6 @@ export default {
         password: this.password,
       };
       this.$store.dispatch("login", loginData).then((response) => {
-        window.console.log(response);
         if (response == "success") {
           this.loading = false;
           this.close();

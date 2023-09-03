@@ -14,24 +14,24 @@ const getters = {
 
         let s = state.ship
 
-        s.maxSpeed = s.speed
-        s.maxAcceleration = s.acceleration
+        s.maxSpeed = parseInt(s.speed)
+        s.maxAcceleration = parseInt(s.acceleration)
 
         if (s.upgrades != null && s.upgrades.length > 0)
             s.upgrades.forEach(upgrade => {
                 if (upgrade.upgrade_type == "speed")
-                    s.maxSpeed *= (1 + upgrade.value / 100);
+                    s.maxSpeed *= (1 + parseInt(upgrade.value) / 100);
 
                 if (upgrade.upgrade_type == "acceleration")
-                    s.maxSpeed *= (1 + upgrade.value / 100);
+                    s.maxSpeed *= (1 + parseInt(upgrade.value) / 100);
             });
 
         let maxStrength = 0;
         let maxStamina = 0;
         if (s.athletes != null && s.athletes.length > 0)
             s.athletes.forEach(a => {
-                maxStrength += a.strength;
-                maxStamina += a.stamina;
+                maxStrength += parseInt(a.strength);
+                maxStamina += parseInt(a.stamina);
             });
         let crewSpeed = maxStrength / 100;
         let crewAcceleration = maxStamina / 100;
@@ -40,6 +40,9 @@ const getters = {
         s.maxSpeed += crewSpeed;
         s.maxAcceleration += crewAcceleration;
 
+        s.maxSpeed = parseFloat(s.maxSpeed).toFixed(2);
+        s.maxAcceleration = parseFloat(s.maxAcceleration).toFixed(2);
+        
         return s;
     },
     shipMaxSpeed: state => {

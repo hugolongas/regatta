@@ -14,7 +14,6 @@ export default {
     let token = this.$route.query.token;
     if (token != "") {
       this.$http.post("/verifyOptin?token=" + token).then((response) => {
-        window.console.log(response);
         if (response == "success") {
           //this.$router.push({ name: "home" });
         } else {

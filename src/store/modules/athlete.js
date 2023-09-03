@@ -11,8 +11,7 @@ const getters ={
 const actions ={
     async syncAthletes({commit}) {
         return new Promise((resolve,reject)=>{            
-            Vue.axios.get("/athlete/all ").then((response)=>{
-                window.console.log(response)                
+            Vue.axios.get("/athlete/all ").then((response)=>{    
                 if(response!==null){
                     if(response.status==200){
                     let athletes = response.data; 

@@ -69,7 +69,6 @@ export default {
       this.loading = true;
       this.$http.post("register?name=" + this.name + "&email=" + this.email + "&password=" + this.password + "&teamId=" + this.teamId)
         .then((response) => {
-          window.console.log(response);
           if (response.status == 201) {
             this.loading = false;
             this.close();

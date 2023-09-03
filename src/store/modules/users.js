@@ -55,7 +55,6 @@ const actions = {
     async getUser({ commit }) {
         return new Promise((resolve, reject) => {
             Vue.axios.get("/user").then((response) => {
-                window.console.log(response)
                 if (response !== null) {
                     if (response.status == 200) {
                         let user = response.data;

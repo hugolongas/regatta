@@ -11,8 +11,7 @@ const getters ={
 const actions ={
     async SyncRaces({commit}) {
         return new Promise((resolve,reject)=>{            
-            Vue.axios.get("/race/all").then((response)=>{
-                window.console.log(response)                
+            Vue.axios.get("/race/all").then((response)=>{  
                 if(response!==null){
                     if(response.status==200){
                     let races = response.data; 

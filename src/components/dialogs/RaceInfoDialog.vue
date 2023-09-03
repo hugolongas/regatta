@@ -35,12 +35,12 @@
               </v-card>
               <v-card>
                 <v-card-title>
-                  Equips
+                  Usuaris
                 </v-card-title>
                 <v-card-text>
                   <ul>
                     <li v-for="(user, i) in JSON.parse(race.results).users" :key="i">
-                      {{ user.user }}->{{ user.points }}
+                      {{ user.user }}->Punts: {{ user.points }} Temps: {{ user.time }}
                     </li>
                   </ul>
                 </v-card-text>
