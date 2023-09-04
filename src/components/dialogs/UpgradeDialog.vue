@@ -5,17 +5,17 @@
       <v-card-text>
         <v-container grid-list-xl fluid>
           <v-layout flex-child wrap>
-            <v-flex sm3 v-for="(upgrade, i) in this.upgrades" :key="i">
+            <v-flex sm4 v-for="(upgrade, i) in this.upgrades" :key="i">
               <v-card :class="hasUpgrade(upgrade.id) ? 'green upgrade-item' : 'red upgrade-item'">
                 <v-card-title>{{ upgrade.name }}</v-card-title>
                 <v-card-text>
                   <p class="upgrade-description">
-                    <strong class="upgrade-description-title">Descripción:
+                    <strong class="upgrade-description-title">Descripció:
                     </strong>
                     {{ upgrade.description }}
                   </p>
                   <p class="upgrade-price">
-                    <strong>Precio: </strong>{{ upgrade.price }}
+                    <strong>Preu: </strong>{{ upgrade.price }}
                   </p>
                 </v-card-text>
                 <v-card-actions>

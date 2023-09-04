@@ -1,7 +1,7 @@
 <template>
   <div class="atletes">
     <h1 class="title">Mariners</h1>
-    <v-data-table :headers="headers" :items="athletes" :items-per-page="5" class="elevation-1" :loading="loading">
+    <v-data-table :headers="headers" :items="athletes" :items-per-page="-1" class="elevation-1" :loading="loading">
       <template v-slot:[`item.actions`]="{ item }">
         <div class="actions">
           <v-layout align-center justify-end>

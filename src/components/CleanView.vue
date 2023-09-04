@@ -3,18 +3,20 @@
     <v-toolbar>
       <v-toolbar-title>REGATA JUGUESQUERA</v-toolbar-title>
       <v-spacer></v-spacer>
-      <span @click="login" small style="cursor:pointer;margin-right: 2px;">
-        <v-icon>
-          mdi-login
-        </v-icon>
-        Logar-se
-      </span>/
-      <span @click="register" small style="cursor:pointer;margin-left: 2px;">
-        <v-icon>
-          mdi-register-outline
-        </v-icon>
-        Registrar-se
-      </span>
+      <v-btn-toggle dense>
+        <v-btn @click="login" small>
+          <v-icon>
+            mdi-login
+          </v-icon>
+          Logar-se
+        </v-btn>
+        <v-btn @click="register" small>
+          <v-icon>
+            mdi-register-outline
+          </v-icon>
+          Registrar-se
+        </v-btn>
+      </v-btn-toggle>
     </v-toolbar>
     <div>
       <router-view />
